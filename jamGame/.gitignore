@@ -1,0 +1,14 @@
+# Unity cache ve derleme klasörleri
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+
+# IDE dosyaları
+.vs/
+*.csproj
+*.sln
+*.suo
