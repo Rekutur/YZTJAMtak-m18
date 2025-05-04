@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f31022a09acb94447a01f7c11330a6f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e116aa3ed61b446b1a2a0cdf417d85, type: 3}
   m_Name: Disket
   m_EditorClassIdentifier: 
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Disket
+  icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  prefab: {fileID: 919132149155446097, guid: 9e1c97fc44f9a8744b61b58f72c56de4, type: 3}
