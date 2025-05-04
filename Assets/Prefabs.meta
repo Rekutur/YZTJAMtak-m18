@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs.meta
 guid: e10c3c151a8c0854ea34ab705955f092
+=======
+guid: e6e1e4187b8a175409611b4a591f9349
+>>>>>>> 7434452 (inventory özelliği eklendi, envanter den çekilen itemin etkileşime girmesi sağlanıyor):jamGame/Assets/Prefabs.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
