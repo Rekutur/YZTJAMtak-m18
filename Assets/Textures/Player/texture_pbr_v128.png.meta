@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 961e47e35a8da724791aad90e8bd13a5
+=======
+guid: e52e2335543b7b1478335c47970ee165
+>>>>>>> f5c0e2b (GameOver sistemi, UI Canvas ve EnemyAI güncellemeleri eklendi)
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

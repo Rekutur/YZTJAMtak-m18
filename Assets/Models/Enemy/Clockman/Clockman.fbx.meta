@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 007be88fb9970be49ba43a4d09995c5d
+=======
+guid: 3d783a10a9e296541bef0e2feb836184
+>>>>>>> f5c0e2b (GameOver sistemi, UI Canvas ve EnemyAI güncellemeleri eklendi)
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

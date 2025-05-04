@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 450a95c1f9dea494786c9f78fd0c44e2
+=======
+guid: 02ee54a04766d4b4bb19f7ae800ab28f
+>>>>>>> f5c0e2b (GameOver sistemi, UI Canvas ve EnemyAI güncellemeleri eklendi)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
