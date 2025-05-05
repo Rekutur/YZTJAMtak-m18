@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ColorButton : MonoBehaviour
 {
@@ -6,14 +6,11 @@ public class ColorButton : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log($"{gameObject.name} butonuna tıklandı.");
+
         if (puzzleManager != null)
-        {
             puzzleManager.RegisterClick(gameObject);
-            Debug.Log(gameObject.name + " butonuna t�kland�.");
-        }
         else
-        {
-            Debug.LogWarning("PuzzleManager atanmad�! " + gameObject.name);
-        }
+            Debug.LogWarning("‼️ PuzzleManager atanmadı!");
     }
 }

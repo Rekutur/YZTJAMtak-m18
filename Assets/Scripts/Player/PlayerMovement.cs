@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation Settings")]
     public float rotationSpeed = 10f;
     public Transform cameraTransform;
+    public TextMeshProUGUI progressText; // Aþama ilerleme göstergesi
+
 
     private CharacterController controller;
     private Vector3 velocity;

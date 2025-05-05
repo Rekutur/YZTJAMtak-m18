@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class ColorPuzzleManager : MonoBehaviour
 {
-    public List<GameObject> colorButtons; // Kırmızı, sarı, mavi, yeşil butonlar
+    public List<GameObject> colorButtons;
     public float colorShowDelay = 1f;
 
-    public GameObject enemyPrefab;       // Düşman prefabı
-    public Transform spawnPoint;         // Düşman çıkış noktası
-    public TextMeshProUGUI sequenceDisplayText; // UI yazısı (Canvas üzerindeki TMP nesnesi)
+    public TextMeshProUGUI progressText; // Aşama göstergesi
+    public TextMeshProUGUI sequenceDisplayText; // Renk sıralaması
+    public TextMeshProUGUI feedbackText; // Kullanıcıya geri bildirim
+
+    public GameObject enemyPrefab;
+    public Transform spawnPoint;
 
     public List<string> colorNames = new List<string> { "Kirmizi", "Sari", "Mavi", "Yesil" };
 
@@ -31,6 +34,11 @@ public class ColorPuzzleManager : MonoBehaviour
 
     IEnumerator StartNextRound()
     {
+        // Tüm UI'ları geri aç
+        if (sequenceDisplayText != null) sequenceDisplayText.gameObject.SetActive(true);
+        if (progressText != null) progressText.gameObject.SetActive(true);
+        if (feedbackText != null) feedbackText.text = "";
+
         canClick = false;
         playerInput.Clear();
         currentSequence.Clear();
@@ -42,12 +50,14 @@ public class ColorPuzzleManager : MonoBehaviour
         {
             int rand = Random.Range(0, colorButtons.Count);
             currentSequence.Add(rand);
-
-            // Başlangıçta tüm kutular boş (☐)
-            sequenceVisuals.Add($"☐ {colorNames[rand]}");
+            sequenceVisuals.Add($"[  ] {colorNames[rand]}");
         }
 
+        if (progressText != null)
+            progressText.text = $"LVL: {currentRound}/{maxRounds}";
+
         UpdateSequenceText();
+
         yield return ShowSequence();
         canClick = true;
     }
@@ -75,8 +85,6 @@ public class ColorPuzzleManager : MonoBehaviour
 
     public void RegisterClick(GameObject clickedButton)
     {
-        Debug.Log("RegisterClick çalıştı: " + clickedButton.name);
-
         if (!canClick || isShowing) return;
 
         int index = colorButtons.IndexOf(clickedButton);
@@ -86,31 +94,38 @@ public class ColorPuzzleManager : MonoBehaviour
         int currentInputIndex = playerInput.Count - 1;
         int correctIndex = currentSequence[currentInputIndex];
 
-        // 🟥 Doğru mu kontrol et
         if (index != correctIndex)
         {
             Debug.Log("YANLIŞ! Puzzle başarısız.");
-            sequenceVisuals[currentInputIndex] = $"✖ {colorNames[correctIndex]}";
+            sequenceVisuals[currentInputIndex] = $"[NO] {colorNames[correctIndex]}";
             UpdateSequenceText();
+
+            // ❌ Diğer yazıları gizle, sadece hata mesajını göster
+            if (sequenceDisplayText != null)
+                sequenceDisplayText.gameObject.SetActive(false);
+
+            if (progressText != null)
+                progressText.gameObject.SetActive(false);
+
+            if (feedbackText != null)
+                feedbackText.text = "Yanlis girdin, tekrar dene!";
 
             SpawnEnemies();
             StartCoroutine(ResetPuzzleAfterDelay());
             return;
         }
 
-        // ✅ Doğru seçim
-        sequenceVisuals[currentInputIndex] = $"✔ {colorNames[correctIndex]}";
+        sequenceVisuals[currentInputIndex] = $"[OK] {colorNames[correctIndex]}";
         UpdateSequenceText();
 
         if (playerInput.Count == currentSequence.Count)
         {
-            Debug.Log("Tüm giriş doğru, bir sonraki tura geçiliyor.");
+            Debug.Log("Tüm girişler doğru. Bir sonraki tura geçiliyor.");
             currentRound++;
 
             if (currentRound > maxRounds)
             {
-                Debug.Log("Tüm turlar tamamlandı! Başarıyla bitirdin.");
-                // Başarı ekranı / kapı açma işlemi buraya
+                Debug.Log("Tüm turlar tamamlandı! Oyuncu başarıyla bitirdi.");
             }
             else
             {
@@ -121,6 +136,8 @@ public class ColorPuzzleManager : MonoBehaviour
 
     void UpdateSequenceText()
     {
+        if (sequenceDisplayText == null) return;
+
         sequenceDisplayText.text = "";
         for (int i = 0; i < sequenceVisuals.Count; i++)
         {
