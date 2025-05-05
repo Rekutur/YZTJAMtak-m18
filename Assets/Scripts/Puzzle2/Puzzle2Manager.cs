@@ -18,6 +18,7 @@ public class Puzzle2Manager : MonoBehaviour
 
     private int currentTargetIndex = -1;
     private bool puzzleActive = false;
+    private bool puzzleWon = false;
 
     public Transform player;
     private int points = 0;
@@ -83,13 +84,13 @@ public class Puzzle2Manager : MonoBehaviour
         // Puzzle başarılı mı? 15 veya 16 puan
         if (points >= 15 && points <= 16)
         {
-            puzzleActive = false;
+            puzzleWon = true;
             instructionText.text = $"🎉 Basarili! Puan: {points}";
             timerText.text = "";
             Debug.Log("🎯 Puzzle basarili!");
         }
 
-        if (puzzleActive == false)
+        if (puzzleWon)
         {
             SaatKafa.SetActive(true);
             Portal.SetActive(true);
