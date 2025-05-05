@@ -63,8 +63,6 @@ public class PlayerMovement : MonoBehaviour
             Quaternion targetRot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
         }
-
-        Debug.Log(velocity);
         float animationSpeed = moveDir.sqrMagnitude > 0f ? currentSpeed : 0f;
         animator.SetFloat("Speed", animationSpeed);
     }
