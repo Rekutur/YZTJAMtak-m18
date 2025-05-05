@@ -4,6 +4,7 @@ using TMPro;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [Header("Speed Settings")]
     public float walkSpeed = 5f;            // Yürüyüþ hýzý
     public float runSpeed = 10f;           // Koþma hýzý
@@ -62,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
             Quaternion targetRot = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
         }
+
+        Debug.Log(velocity);
+        float animationSpeed = moveDir.sqrMagnitude > 0f ? currentSpeed : 0f;
+        animator.SetFloat("Speed", animationSpeed);
     }
     public bool IsMoving()
     {
