@@ -4,6 +4,8 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     public Transform player;
     public float chaseRange = 10f;
     public float stopDistance = 0.9f;
@@ -59,5 +61,7 @@ public class EnemyAI : MonoBehaviour
                 agent.ResetPath();
             }
         }
+        Vector3 horizontalVelocity = new Vector3(agent.velocity.x, 0f, agent.velocity.z);
+        animator.SetFloat("Speed", horizontalVelocity.magnitude);
     }
 }

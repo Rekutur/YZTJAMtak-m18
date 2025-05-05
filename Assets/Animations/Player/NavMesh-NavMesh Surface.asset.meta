@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animations/Player/mesh.controller.meta
+guid: 4b35ca270b575c94aa59ddc40ce4b571
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+========
+guid: edd5aeb4a54a80f4f98ad8c72f7bcd10
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+>>>>>>>> 255cc59323b95d62565da071c2937679d4ce7986:Assets/Animations/Player/NavMesh-NavMesh Surface.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
