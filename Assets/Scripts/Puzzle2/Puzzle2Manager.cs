@@ -5,6 +5,8 @@ using TMPro;
 
 public class Puzzle2Manager : MonoBehaviour
 {
+    [SerializeField] private GameObject SaatKafa;
+    [SerializeField] private GameObject Portal;
     public List<Transform> targetCubes; // Hedef küpler
     public List<string> colorNames = new List<string> { "Kirmizi", "Sari", "Mavi", "Yesil" };
     public TextMeshProUGUI instructionText;
@@ -87,6 +89,11 @@ public class Puzzle2Manager : MonoBehaviour
             Debug.Log("🎯 Puzzle basarili!");
         }
 
+        if (puzzleActive == false)
+        {
+            SaatKafa.SetActive(true);
+            Portal.SetActive(true);
+        }
         // Eğer puan -3 veya daha düşükse kaybet
         if (points <= -3)
         {

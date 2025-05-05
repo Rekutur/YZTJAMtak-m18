@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ColorPuzzleManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Gecit;
     public List<GameObject> colorButtons;
     public float colorShowDelay = 1f;
 
@@ -125,6 +126,7 @@ public class ColorPuzzleManager : MonoBehaviour
 
             if (currentRound > maxRounds)
             {
+                Gecit.transform.position = new Vector3(Gecit.transform.position.x, (Gecit.transform.position.y+2), Gecit.transform.position.z);
                 Debug.Log("Tüm turlar tamamlandı! Oyuncu başarıyla bitirdi.");
             }
             else
